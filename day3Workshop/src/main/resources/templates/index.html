@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="/styles.css">
+    <img src="/download.jpg" alt="" class = "full-width-image">
+</head>
+<body>
+    <h1>TO DO LIST</h1>
+    <!--
+        a html form can only have the method of POST and GET
+    -->
+    <form method ="POST" action="/toDoList" data-th-object = "${tasksTodo}" >
+        <table>
+            <tr>
+                <td>Task Name:</td>
+                <td><input type="text" data-th-field = "*{task}">
+                    <span 
+                    data-th-if="${#fields.hasErrors('task')}"
+                    data-th-errors="*{task}" data-th-errorclass="error">
+                 </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="priority">Select Priority:</label>
+                </td>
+                <td>
+                    <select data-th-field="*{priority}">
+                      <option value="high">High</option>
+                      <option value="medium">Med</option>
+                      <option value="low">Low</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Complete by:</td>
+                <td><input type="date" data-th-field="*{date}"></td>
+            </tr>
+            <tr>
+                <td><button type ="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+
+    <br><br><br>
+    <h2 data-th-if = "${Number == 0}">
+        Look like you are free!
+    </h2>
+    <table>
+        <tr>
+            <td>Number of Tasks: <span data-th-text="${Number}"></span></td>
+        </tr>
+    </table>
+    
+
+
+    <table class = "tasktable" data-th-if="${Number gt 0}">
+        <thead>
+            <td>Task</td>
+            <td>Priority</td>
+            <td>Complete by</td>
+        </thead>
+        <tbody data-th-each="r : ${reglist}">
+            <td data-th-text="${r.task}"></td>
+            <td data-th-classappend="${r.priority == 'high' ? 'high-priority' : (r.priority == 'medium' ? 'medium-priority' : 'low-priority')}"
+                data-th-text="${r.priority}"></td>
+            <td data-th-text="${r.date}"></td>
+        </tbody>
+        
+    </table>
+
+
+    <br><br><br>
+
+    <form method="POST" action="/exit">
+        <button type="submit">Save !</button>
+        </form>
+</body>
+</html>

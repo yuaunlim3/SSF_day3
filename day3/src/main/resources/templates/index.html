@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" th:href="@{/static/style.css}">
+</head>
+<body>
+    <h1>Registration</h1>
+    <form method="POST" action="/registration/obj" data-th-object="${reg}">
+        <input type="hidden" name="passphrase" value="this is a secret">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <input type="text" data-th-field="*{name}" name="name">
+                    <span data-th-if="${#fields.hasErrors('name')}" 
+                          data-th-errors="*{name}" 
+                          class="error"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>
+                    <input type="text" data-th-field="*{email}" name="email">
+                    <span data-th-if="${#fields.hasErrors('email')}" 
+                          data-th-errors="*{email}" 
+                          class="error"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Comments:</td>
+                <td><textarea data-th-field="*{comment}" name="comment" rows="5" cols="30"></textarea></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+            <tr data-th-if="${#fields.hasErrors('global')}">
+                <td>
+                    <ul>
+                        <li data-th-each="err : ${#fields.errors('global')}">
+                            <span data-th-text="${err}" class="error"></span>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

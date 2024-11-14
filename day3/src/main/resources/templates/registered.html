@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>You have been registered</h1>
+    <div>
+        <h2>Your email is <code data-th-text="${reg.email}"> </code></h2>
+    </div>
+
+    <div data-th-object="${reg}">
+        <h2>Your email is <code data-th-text="*{email}"> </code></h2>
+    </div>
+
+    <ol>
+        <li data-th-each="r : ${reglist}">
+            <span data-th-text="${r.name}"></span>
+            <span data-th-text="${r.email}"></span>
+        </li>
+    </ol>
+
+    
+</body>
+</html>

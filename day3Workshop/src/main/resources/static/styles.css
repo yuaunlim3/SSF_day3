@@ -1,0 +1,51 @@
+.error {
+    color: darkred;
+    font-size: .8em;
+    font-family: monospace;
+ }
+
+ body {
+    background-color: lightblue; /* Light grey background */
+}
+
+
+ .full-width-image {
+    width: 40%; /* Full width of the page or container */
+    padding-left: 25%;
+    height: 250px; /* Maintains aspect ratio */
+}
+.tasktable {
+    width: 100%; /* Set the table to take the full width of its container */
+    table-layout: fixed; /* Ensures equal-width columns */
+    border-collapse: collapse; /* Optional: removes gaps between cells */
+}
+
+.tasktable td
+.tasktable th {
+    width: 33.33%; /* Divide equally for three columns */
+    text-align: center; /* Optional: center-align text in cells */
+    padding: 8px; /* Optional: space inside cells */
+    border: 4px solid black; /* Optional: adds border to cells */
+}
+
+ .high-priority {
+    background-color: red; /* Light red for high priority */
+    font-weight: bolder;
+    font-size: large;
+
+}
+
+.medium-priority {
+    background-color: rgb(251, 180, 0); /* Light orange for medium priority */
+    font-weight: bolder;
+    font-size: large;
+}
+
+.low-priority {
+    background-color: rgb(1, 255, 39); /* Light green for low priority */
+    font-weight: bolder;
+    font-size: large;
+}
+
+
+
